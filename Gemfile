@@ -5,18 +5,25 @@ ruby "3.3.0"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.2.0"
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
+
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
+
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 6.0"
+
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
 gem "jsbundling-rails"
+
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
+
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
+
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
@@ -25,6 +32,16 @@ gem "vite_rails"
 
 # Gem for integrating Inertia.js with Rails. Inertia.js is a framework for building modern single-page applications using server-side routing and controllers.
 gem "inertia_rails", git: "https://github.com/inertiajs/inertia-rails"
+
+gem 'sidekiq', '~> 7.0' # Background job processing and caching
+
+gem 'kaminari', '~> 1.2' # Pagination library
+
+gem 'faraday', '~> 2.7' # HTTP client library
+
+gem 'redis', '~> 5.0'       # For interacting with Redis
+
+gem 'redis-rails', '~> 5.0' # For Redis caching in Rails (optional, if you need it)
 
 group :development, :test do
   # Adds RSpec for testing Rails applications
