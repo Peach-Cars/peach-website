@@ -1,4 +1,3 @@
 if defined?(Annotate)
-    Annotate.default_format = 'short'
-  end
-  
+  Annotate.default_format = "short"
+end
