@@ -49,6 +49,10 @@ gem 'dry-initializer'
 # For type definitions with dry-types
 gem 'dry-types'
 
+# Generate JavaScript routes for Rails
+gem "js-routes"
+
+
 group :development, :test do
   # Adds RSpec for testing Rails applications
   gem "rspec-rails", "~> 6.0"
