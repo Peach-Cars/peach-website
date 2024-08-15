@@ -43,6 +43,12 @@ gem 'redis', '~> 5.0'       # For interacting with Redis
 
 gem 'redis-rails', '~> 5.0' # For Redis caching in Rails (optional, if you need it)
 
+# For initializing objects with dry-initializer
+gem 'dry-initializer'
+
+# For type definitions with dry-types
+gem 'dry-types'
+
 group :development, :test do
   # Adds RSpec for testing Rails applications
   gem "rspec-rails", "~> 6.0"
