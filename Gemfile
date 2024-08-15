@@ -20,9 +20,15 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
+# Gem for integrating Vite with Rails. Vite is a build tool that provides a fast development server and optimized builds for production.
 gem "vite_rails"
 
+# Gem for integrating Inertia.js with Rails. Inertia.js is a framework for building modern single-page applications using server-side routing and controllers.
 gem "inertia_rails", git: 'https://github.com/inertiajs/inertia-rails'
+
+group :development, :test do
+  gem 'rspec-rails', '~> 6.0'
+end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
