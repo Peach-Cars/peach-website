@@ -27,8 +27,13 @@ gem "vite_rails"
 gem "inertia_rails", git: 'https://github.com/inertiajs/inertia-rails'
 
 group :development, :test do
+  # Adds RSpec for testing Rails applications
   gem 'rspec-rails', '~> 6.0'
+
+  # Adds Annotate for adding schema and other metadata comments to models and migrations
+  gem 'annotate'
 end
+
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
