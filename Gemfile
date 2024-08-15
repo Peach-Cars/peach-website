@@ -32,6 +32,15 @@ group :development, :test do
 
   # Adds Annotate for adding schema and other metadata comments to models and migrations
   gem 'annotate'
+
+   # RuboCop for Ruby code style enforcement
+   gem 'rubocop', '~> 1.0'
+
+   # RuboCop extension for Rails-specific style checks
+   gem 'rubocop-rails', '~> 2.0'
+ 
+   # Standard for consistent Ruby code style
+   gem 'standard', '~> 1.0'
 end
 
 
@@ -51,6 +60,8 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+
+
 end
 
 group :development do
