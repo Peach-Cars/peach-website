@@ -25,15 +25,6 @@ application up and running.
    ```
 
 
-### Configuration
-- Set up environment variables for all environments.
-- Configure **Sidekiq** with **Redis**.
-- Enable UUIDs for primary keys.
-- Set up the legacy database connection.
-- Configure **RSpec** as the default testing framework.
-- Set up **ESLint** with **Prettier**.
-- Configure **Tailwind CSS**.
-
 ### Database Setup
 - Create the database: `rails db:create`
 - Initialize schema: `rails db:migrate`
