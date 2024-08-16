@@ -3,7 +3,7 @@ import { InertiaLink } from '@inertiajs/inertia-react';
 const Layout = ({ children }) => (
   <>
     <div className="min-h-full">
-      <nav className="bg-gray-100 shadow-sm">
+      <nav className="bg-gray-700 shadow-sm">
         <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             <div className="flex">        
