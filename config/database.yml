@@ -25,6 +25,13 @@ development:
   <<: *default
   database: peach_cars
 
+  replica:
+    - host: localhost
+      port: 5432
+      username: <%= Rails.application.credentials.dig(:database, :replica_username) %>
+      password: <%= Rails.application.credentials.dig(:database, :replica_password) %>
+
+
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.
   # When left blank, PostgreSQL will use the default role. This is
@@ -84,3 +91,10 @@ production:
   database: peach_cars_production
   username: pch_website_rails_inertia
   password: <%= ENV["PCH_WEBSITE_RAILS_INERTIA_DATABASE_PASSWORD"] %>
+
+  replicas:
+    - host: <%= ENV["READ_REPLICA_HOST"] %>
+      port: 5432
+      username: <%= ENV["READ_REPLICA_USERNAME"] %>
+      password: <%= ENV["READ_REPLICA_PASSWORD"] %>
+
