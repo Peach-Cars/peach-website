@@ -21,7 +21,6 @@ default: &default
   username: <%= Rails.application.credentials.dig(:database, :username)  %>
   password: <%= Rails.application.credentials.dig(:database, :password) %>
 
-
 development:
   <<: *default
   database: peach_cars

@@ -12,21 +12,25 @@ interface PageComponent extends ComponentType<any> {
   layout?: ComponentType<any>;
 }
 
-// Type for pages object
-type Pages = {
-  [key: string]: () => Promise<{ default: PageComponent }>;
+// Define the type for a page module
+type PageModule = {
+  default: PageComponent;
 };
 
+// Define the type for pages object
+type Pages = Record<string, () => Promise<PageModule>>;
+
 // Import pages dynamically
-const pages: Pages = import.meta.glob('../pages/*.tsx');
+const pages = import.meta.glob('../pages/*.tsx') as Pages;
 
 document.addEventListener('DOMContentLoaded', () => {
-  const csrfToken = document.querySelector('meta[name=csrf-token]').content;
+  const metaTag = document.querySelector('meta[name=csrf-token]');
+  const csrfToken = metaTag ? metaTag.getAttribute('content') || '' : '';
   axios.defaults.headers.common['X-CSRF-Token'] = csrfToken;
-  InertiaProgress.init({ color: "#4B55" });
+  InertiaProgress.init({ color: '#4B55' });
 
   createInertiaApp({
-    title: title => `${title} - Peach Cars`,
+    title: (title) => `${title} - Peach Cars`,
     resolve: async (name: string) => {
       const pageModule = pages[`../pages/${name}.tsx`];
       if (pageModule) {

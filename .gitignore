@@ -42,3 +42,11 @@ node_modules
 
 /app/assets/builds/*
 !/app/assets/builds/.keep
+
+/config/credentials/production.key
+
+/config/credentials/development.key
+
+/config/credentials/staging.key
+
+/config/credentials/test.key
