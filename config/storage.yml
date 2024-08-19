@@ -1,0 +1,24 @@
+# Default storage configuration using local disk
+default:
+  service: Disk
+  root: <%= Rails.root.join("storage") %>
+
+# Amazon S3 configuration
+amazon:
+  service: S3
+  credentials: <%= Rails.root.join("path/to/aws_credentials.yml") %>
+  bucket: <%= ENV['AWS_BUCKET'] || 'default-bucket' %>
+  region: eu-central-1
+
+# Test storage configuration using local disk
+test:
+  service: Disk
+  root: <%= Rails.root.join("tmp/storage") %>
+
+
+
+# Optional mirror configuration to mirror between storage services
+# mirror:
+#   service: Mirror
+#   primary: local
+#   mirrors: [ amazon, google, microsoft ]

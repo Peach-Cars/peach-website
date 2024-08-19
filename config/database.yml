@@ -8,11 +8,12 @@ default: &default
   password: <%= Rails.application.credentials.dig(:database, :password) %>
 
 development:
+  primary:
   <<: *default
   database: peach_cars
 
   replica:
-    - host: localhost
+      host: localhost
       port: 5432
       username: <%= Rails.application.credentials.dig(:database, :replica_username) %>
       password: <%= Rails.application.credentials.dig(:database, :replica_password) %>
@@ -24,12 +25,13 @@ test:
 
 production:
   <<: *default
-  database: peach_cars_production
-  username: pch_website_rails_inertia
-  password: <%= ENV["PCH_WEBSITE_RAILS_INERTIA_DATABASE_PASSWORD"] %>
+  host: <%= ENV["PROD_DB_HOST"] %>
+  database: <%= ENV["PROD_DB_NAME"] %>
+  username: <%= ENV["PROD_DB_USERNAME"] %>
+  password: <%= ENV["PROD_DB_PASSWORD"] %>
 
-  replicas:
-    - host: <%= ENV["READ_REPLICA_HOST"] %>
+  replica:
+      host: <%= ENV["READ_REPLICA_HOST"] %>
       port: 5432
       username: <%= Rails.application.credentials.dig(:database, :replica_username) %>
       password: <%= Rails.application.credentials.dig(:database, :replica_password) %>
