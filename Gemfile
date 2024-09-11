@@ -71,8 +71,13 @@ group :development, :test do
   gem "standard", "~> 1.0"
 
   # Provides RSpec-specific linting rules for RuboCop. The '~> 2.0' version allows updates within the 2.x range, while `require: false` prevents auto-requiring in production.
-gem 'rubocop-rspec', '~> 2.0', require: false
+  gem 'rubocop-rspec', '~> 2.0', require: false
 
+  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+   gem "debug", platforms: %i[mri mingw x64_mingw]
+
+   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
+   gem "brakeman", require: false
 end
 
 gem "tailwindcss-rails", "~> 2.7"
@@ -82,14 +87,6 @@ gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
-
-group :development, :test do
-  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[mri mingw x64_mingw]
-
-  # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
-  gem "brakeman", require: false
-end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
