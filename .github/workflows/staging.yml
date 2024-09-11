@@ -1,0 +1,75 @@
+name: Deploy
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - develop
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Configure AWS credentials
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4.0.2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
+
+      # Login to Amazon ECR
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      # Get current date and time
+      - name: Get current date and time
+        id: get_current_date
+        run: echo "::set-output name=date::$(date +'%Y%m%d%H%M%S')"
+
+      # Get short commit hash
+      - name: Get short commit hash
+        id: get_commit_hash
+        run: echo "::set-output name=commit_hash::$(git log --pretty=format:'%h' -n 1)"
+
+      # Create tag
+      - name: Create tag
+        id: create_tag
+        run: |
+          TAG="V$(date +'%y.%m').${{ steps.get_commit_hash.outputs.commit_hash }}"
+          echo "::set-output name=tag::${TAG}"
+
+      # Build and tag Docker image
+      - name: Build and tag Docker image
+        if: success()
+        run: |
+          TAG="${{ steps.create_tag.outputs.tag }}"
+          docker build -t pch-website:$TAG .
+          docker tag pch-website:$TAG ${{ steps.login-ecr.outputs.registry }}/pch-website:$TAG
+
+      # Push Docker image to ECR
+      - name: Push Docker image to ECR
+        if: success()
+        run: |
+          TAG="${{ steps.create_tag.outputs.tag }}"
+          docker push ${{ steps.login-ecr.outputs.registry }}/pch-website:$TAG
+
+      # Deploy to Elastic Beanstalk
+      - name: Deploy to Elastic Beanstalk
+        uses: aws-actions/elastic-beanstalk-deploy@v1
+        with:
+          application-name: peach-revamp-staging-website-ebs
+          environment-name: staging
+          version-label: ${{ steps.create_tag.outputs.tag }}
+          bucket-name: ${{ secrets.S3_BUCKET_NAME }}
+          bucket-key: elastic-beanstalk/${{ steps.create_tag.outputs.tag }}.zip
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ secrets.AWS_DEFAULT_REGION }}

@@ -59,7 +59,7 @@ To run locally:
 
 ```
 bundle install
-npm install
+yarn
 ./bin/dev
 
 ```
