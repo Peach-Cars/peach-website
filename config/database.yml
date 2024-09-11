@@ -32,7 +32,6 @@ production:
     password: <%= ENV["PROD_DB_PASSWORD"] %>
 
   replica:
-    <<: *default
     host: <%= ENV["READ_REPLICA_HOST"] %>
     port: 5432
     username: <%= Rails.application.credentials.dig(:database, :replica_username) %>
