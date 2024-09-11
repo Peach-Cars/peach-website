@@ -20,7 +20,6 @@ gem "jsbundling-rails"
 
 gem 'aws-sdk-s3'
 
-
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
 
@@ -54,7 +53,6 @@ gem 'dry-types'
 
 # Generate JavaScript routes for Rails
 gem "js-routes"
-
 
 group :development, :test do
   # Adds RSpec for testing Rails applications
@@ -91,9 +89,6 @@ group :development, :test do
 
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", require: false
-
-  # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
-  gem "rubocop-rails-omakase", require: false
 end
 
 group :development do
@@ -106,5 +101,3 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
-
-
