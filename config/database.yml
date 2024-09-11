@@ -1,38 +1,39 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  # For details on connection pooling, see Rails configuration guide
-  # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: <%= Rails.application.credentials.dig(:database, :username)  %>
   password: <%= Rails.application.credentials.dig(:database, :password) %>
 
 development:
   primary:
-  <<: *default
-  database: peach_cars
+    <<: *default
+    database: peach_cars
 
-  replica:
-      host: localhost
-      port: 5432
-      username: <%= Rails.application.credentials.dig(:database, :replica_username) %>
-      password: <%= Rails.application.credentials.dig(:database, :replica_password) %>
-      database: peach
+  legacy:
+    <<: *default
+    database: peach
 
 test:
-  <<: *default
-  database: peach_cars_test
+  primary:
+    <<: *default
+    database: peach_cars_test
+
+  legacy:
+    <<: *default
+    database: peach_test
 
 production:
-  <<: *default
-  host: <%= ENV["PROD_DB_HOST"] %>
-  database: <%= ENV["PROD_DB_NAME"] %>
-  username: <%= ENV["PROD_DB_USERNAME"] %>
-  password: <%= ENV["PROD_DB_PASSWORD"] %>
+  primary:
+    <<: *default
+    host: <%= ENV["PROD_DB_HOST"] %>
+    database: <%= ENV["PROD_DB_NAME"] %>
+    username: <%= ENV["PROD_DB_USERNAME"] %>
+    password: <%= ENV["PROD_DB_PASSWORD"] %>
 
   replica:
-      host: <%= ENV["READ_REPLICA_HOST"] %>
-      port: 5432
-      username: <%= Rails.application.credentials.dig(:database, :replica_username) %>
-      password: <%= Rails.application.credentials.dig(:database, :replica_password) %>
-
+    <<: *default
+    host: <%= ENV["READ_REPLICA_HOST"] %>
+    port: 5432
+    username: <%= Rails.application.credentials.dig(:database, :replica_username) %>
+    password: <%= Rails.application.credentials.dig(:database, :replica_password) %>
