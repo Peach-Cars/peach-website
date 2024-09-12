@@ -4,7 +4,7 @@ class BaseApiService
 
   option :base_url
   option :token, optional: true
-  option :auth_type, default: 'Bearer'
+  option :auth_type, default: -> { 'Bearer' }
 
   private
 

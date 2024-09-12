@@ -2,7 +2,7 @@
 class FreshSalesService < BaseApiService
   option :base_url, default: -> { Rails.application.credentials.dig(:freshsales, :base_url) }
   option :token, default: -> { Rails.application.credentials.dig(:freshsales, :api_key) }
-  option :auth_type, default: 'Token'
+  option :auth_type, default: -> { 'Token' }
 
   def create_contact(data)
     post('/contacts', data)
