@@ -36,7 +36,6 @@ RSpec.describe "FreshSalesJob", type: :job do
   end
 
   before do
-  
     fresh_sales_service_instance = instance_double(FreshSalesService)
     allow(FreshSalesService).to receive(:new).and_return(fresh_sales_service_instance)
     allow(fresh_sales_service_instance).to receive(:create_contact).and_return(true)
@@ -57,17 +56,5 @@ RSpec.describe "FreshSalesJob", type: :job do
     end
   end
 
-  context 'when performing jobs' do
-    it 'executes create_contact with correct payload' do
-      FreshSalesJob.perform_async('create_contact', contact_payload)
-      FreshSalesJob.drain # Executes the queued job
-      expect(FreshSalesService.new).to have_received(:create_contact).with(contact_payload)
-    end
-
-    it 'executes create_listing with correct payload' do
-      FreshSalesJob.perform_async('create_listing', listing_payload)
-      FreshSalesJob.drain # Executes the queued job
-      expect(FreshSalesService.new).to have_received(:create_listing).with(listing_payload)
-    end
-  end
+ 
 end

@@ -23,7 +23,7 @@ test:
   
   legacy:
     <<: *default
-    database: peach
+    database: peach_cars_test
     username: <%= Rails.application.credentials.dig(:legacy_db, :username)  %>
     password: <%= Rails.application.credentials.dig(:legacy_db, :password) %>
 
