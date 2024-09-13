@@ -6,6 +6,7 @@ module Legacy
     has_many :tags, through: :listing_tags, class_name: 'Legacy::Tag'
     has_many :listing_images, class_name: 'Legacy::ListingImage', foreign_key: 'listing_id'
     has_many :listing_prices, class_name: 'Legacy::ListingPrice', foreign_key: 'listing_id'
+    has_many :buyer_leads, class_name: 'BuyerLead', foreign_key: 'listing_id'
     belongs_to :listing_location, class_name: 'Legacy::ListingLocation', foreign_key: 'location_id'
     belongs_to :listing_relationship_manager, class_name: 'Legacy::ListingRelationshipManager', foreign_key: 'seller_relation_manager_id'
     belongs_to :vehicle, class_name: 'Legacy::Vehicle', foreign_key: 'vehicle_id'
