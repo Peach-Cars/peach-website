@@ -5,10 +5,10 @@ RSpec.describe "FreshSalesJob", type: :job do
         "first_name" => 'John',
         "last_name" => 'Doe',
         "email" => 'john.doe@example.com',
-        "mobile_number" => '123-456-7890',
+        "mobile_number" => '0768978878',
         "custom_field" => {
           "cf_type" => 'Individual',
-          "cf_location_of_residence" => 'New York'
+          "cf_location_of_residence" => 'Nairobi'
         },
         "lead_source_id" => 22_000_369_921
       }
@@ -18,18 +18,15 @@ RSpec.describe "FreshSalesJob", type: :job do
   let(:listing_payload) do
     {
       "product" => {
-        "name" => 'Sample Product',
-        "description" => 'This is a sample product',
-        "category" => 'Software',
-        "is_active" => true,
-        "parent_product" => 1,
-        "product_code" => 'sample_product',
-        "sku_number" => 'sample_sku',
-        "valid_till" => '2021-11-06T13:47:13+05:00',
-        "owner_id" => 3,
+        "name" => 'KBB123',
+        "category" => 'Hatchback',
+        "product_code" => 'TOYOTA',
+        "sku_number" => 'Noah',
         "custom_field" => {
-          "cf_rating" => 'Excellent',
-          "cf_quantity" => 10
+          "cf_year" => '2020',
+          "cf_4_wheel_drive" => 'Yes',
+          "cf_gearbox_type" => 'Manual',
+          "cf_fuel_type" => 'Petrol'
         }
       }
     }
@@ -55,6 +52,4 @@ RSpec.describe "FreshSalesJob", type: :job do
       end.to change(FreshSalesJob.jobs, :size).by(1)
     end
   end
-
- 
 end
