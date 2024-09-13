@@ -15,6 +15,7 @@ development:
     database: peach
     username: <%= Rails.application.credentials.dig(:legacy_db, :username)  %>
     password: <%= Rails.application.credentials.dig(:legacy_db, :password) %>
+    database_tasks: false
 
 test:
   primary:
@@ -26,6 +27,7 @@ test:
     database: peach_cars_test
     username: <%= Rails.application.credentials.dig(:legacy_db, :username)  %>
     password: <%= Rails.application.credentials.dig(:legacy_db, :password) %>
+    database_tasks: false
 
 
 production:
@@ -41,3 +43,4 @@ production:
     port: 5432
     username: <%= Rails.application.credentials.dig(:database, :replica_username) %>
     password: <%= Rails.application.credentials.dig(:database, :replica_password) %>
+    database_tasks: false
