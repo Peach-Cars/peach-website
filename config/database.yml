@@ -13,15 +13,22 @@ development:
   legacy:
     <<: *default
     database: peach
+    username: <%= Rails.application.credentials.dig(:legacy_db, :username)  %>
+    password: <%= Rails.application.credentials.dig(:legacy_db, :password) %>
+    database_tasks: false
 
 test:
   primary:
     <<: *default
     database: peach_cars_test
-
+  
   legacy:
     <<: *default
-    database: peach_test
+    database: peach
+    username: <%= Rails.application.credentials.dig(:legacy_db, :username)  %>
+    password: <%= Rails.application.credentials.dig(:legacy_db, :password) %>
+    database_tasks: false
+
 
 production:
   primary:
@@ -30,10 +37,18 @@ production:
     database: <%= ENV["PROD_DB_NAME"] %>
     username: <%= ENV["PROD_DB_USERNAME"] %>
     password: <%= ENV["PROD_DB_PASSWORD"] %>
+  
 
   replica:
-    <<: *default
-    host: <%= ENV["READ_REPLICA_HOST"] %>
+    host: <%= ENV["REPLICA_HOST"] %>
     port: 5432
-    username: <%= Rails.application.credentials.dig(:database, :replica_username) %>
-    password: <%= Rails.application.credentials.dig(:database, :replica_password) %>
+    username: <%= ENV["REPLICA_DB_USERNAME"] %>
+    password: <%= ENV["REPLICA_DB_PASSWORD"] %>
+
+  legacy:
+    <<: *default
+    database: <%= ENV["LEGACY_DB_NAME"] %>
+    host: <%= ENV["LEGACY_HOST"] %>
+    username: <%= ENV["LEGACY_DB_USERNAME"] %>
+    password: <%= ENV["LEGACY_DB_PASSWORD"] %>
+    database_tasks: false
