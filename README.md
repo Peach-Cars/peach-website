@@ -30,6 +30,20 @@ application up and running.
 
 ### Database Setup
 
+## Legacy local db setup
+
+- Get the database dump using this command:
+
+```
+pg_dump -U <user> -h <rds host url> peachapi > db_dump_backup.sql
+```
+
+- After the getting the dump, dump the database into your local database
+
+```
+psql -U <db_user> -d <local_database_name> -h localhost -f /path/to/your/db_dump_backup.sql
+```
+
 - Create the database: `rails db:create`
 - Initialize schema: `rails db:migrate`
 
@@ -44,16 +58,9 @@ application up and running.
 
 * Deployment instructions
 
-* ...
-
 # Inertia on Rails with SSR enabled
 
-[Ruby on Rails](https://github.com/rails/rails), [Vite](https://github.com/vitejs/vite), and [InertiaJS](https://github.com/inertiajs/inertia-rails) I'd recommend checking out the following files:
-
-- `app/javascript/pages/Dashboard.jsx`: The React component being rendered by the `/` route
-- `app/controllers/dashboard_controller.rb`: The controller that handled rendering the root page
-- `app/javascript/components/Layout.jsx`: The React component providing the "magic" layout similar to Rails's application layout
-- `app/javascript/entrypoints/application.jsx`: The Vite entrypoint that handles initializing InertiaJS
+[Ruby on Rails](https://github.com/rails/rails), [Vite](https://github.com/vitejs/vite), and [InertiaJS](https://github.com/inertiajs/inertia-rails)
 
 To run locally:
 
