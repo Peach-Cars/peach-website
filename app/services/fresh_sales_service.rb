@@ -5,16 +5,18 @@ class FreshSalesService < BaseApiService
   option :auth_type, default: -> { 'Token' }
 
   def create_contact(data)
-    post('/contacts', data)
+    response = post('/contacts', data)
+    response.success?
   rescue ApiError => e
     Rails.logger.error "Failed to create contact in Freshsales: #{e.message}"
-    raise
+    false
   end
 
   def create_listing(data)
-    post('/cpq/products', data)
+    response = post('/cpq/products', data)
+    response.success?
   rescue ApiError => e
     Rails.logger.error "Failed to create listing in Freshsales: #{e.message}"
-    raise
+    false
   end
 end

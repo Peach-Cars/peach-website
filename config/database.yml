@@ -24,7 +24,7 @@ test:
   
   legacy:
     <<: *default
-    database: peach_cars_test
+    database: peach
     username: <%= Rails.application.credentials.dig(:legacy_db, :username)  %>
     password: <%= Rails.application.credentials.dig(:legacy_db, :password) %>
     database_tasks: false

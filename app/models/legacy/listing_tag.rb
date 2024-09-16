@@ -1,4 +1,11 @@
-# Listing tags legacy model (active, featured, flagged, sold, archived)
+# == Schema Information
+#
+# Table name: vehicle_vehiclelisting_tags
+#
+#  id                :integer          not null, primary key
+#  vehiclelisting_id :bigint           not null
+#  tag_id            :bigint           not null
+#
 module Legacy
   class ListingTag < ApplicationRecord
     self.table_name = "vehicle_vehiclelisting_tags"

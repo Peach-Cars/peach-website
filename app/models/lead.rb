@@ -22,7 +22,6 @@
 #  sent_to_freshsales  :boolean
 #  sent_to_django_api  :boolean
 #
-# Model for Leads base class
 class Lead < ApplicationRecord
   validates :full_name, :email, :phone, presence: true
   self.inheritance_column = :type

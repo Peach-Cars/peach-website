@@ -1,4 +1,12 @@
-# Listing Location Legacy model
+# == Schema Information
+#
+# Table name: vehicle_vehiclelistinglocation
+#
+#  id       :bigint           not null, primary key
+#  created  :timestamptz      not null
+#  modified :timestamptz      not null
+#  name     :string(50)       not null
+#
 module Legacy
   class ListingLocation < ApplicationRecord
     self.table_name = "vehicle_vehiclelistinglocation"
