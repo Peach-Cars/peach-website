@@ -22,8 +22,18 @@
 #  sent_to_freshsales  :boolean
 #  sent_to_django_api  :boolean
 #
+require 'webmock/rspec'
 RSpec.describe "BuyerLead", type: :model do
-  let(:listing) { Legacy::Listing.find_by(id: 2106) } # Adjust as needed
+  before do
+    stub_request(:post, "https://peach-team.myfreshworks.com/crm/sales/api/contacts")
+      .to_return(
+        status: 200,
+        body: { success: true }.to_json, 
+        headers: { 'Content-Type' => 'application/json' }
+      )
+  end
+
+  let(:listing) { Legacy::Listing.find_by(id: 2106) }
 
   context 'validations' do
     it 'is valid with all required attributes' do
@@ -83,7 +93,7 @@ RSpec.describe "BuyerLead", type: :model do
           email: 'john.doe@example.com',
           phone: '123-456-7890'
         )
-      end.to have_enqueued_job(FreshSalesJob)
+      end.to change(FreshSalesJob.jobs, :size).by(1)
     end
 
     it 'does not enqueue a job if pushed_to_fresh_sales is true' do
@@ -94,11 +104,11 @@ RSpec.describe "BuyerLead", type: :model do
         full_name: 'John Doe',
         email: 'john.doe@example.com',
         phone: '123-456-7890',
-        pushed_to_fresh_sales: true
+        sent_to_freshsales: true
       )
       expect do
         buyer_lead.save
-      end.not_to have_enqueued_job(FreshSalesJob)
+      end.not_to change(FreshSalesJob.jobs, :size)
     end
   end
 
@@ -112,9 +122,7 @@ RSpec.describe "BuyerLead", type: :model do
         email: 'john.doe@example.com',
         phone: '123-456-7890'
       )
-
-      # Trigger the job processing here, if needed
-      FreshSalesJob.perform_now(buyer_lead) # or however the job is triggered
+      FreshSalesJob.new.perform('create_contact', buyer_lead.send(:freshsales_payload), buyer_lead.id)
 
       buyer_lead.reload
       expect(buyer_lead.sent_to_freshsales).to be_truthy

@@ -13,6 +13,7 @@ class FreshSalesJob
     case operation
     when 'create_contact'
       success = freshsales_service.create_contact(data)
+      Rails.logger.debug "Success value: #{success}"
     when 'create_listing'
       success = freshsales_service.create_listing(data)
     else

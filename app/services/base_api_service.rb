@@ -48,7 +48,7 @@ class BaseApiService
   end
 
   def parse_response(response)
-    JSON.parse(response.body) # Parse JSON response
+    response.body
   rescue JSON::ParserError
     Rails.logger.debug("Unable to parse JSON response from URL: #{response.env.url}")
     response.body
