@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: vehicle_vehiclelistingpricehistory
+#
+#  id            :bigint           not null, primary key
+#  created       :timestamptz      not null
+#  modified      :timestamptz      not null
+#  selling_price :string(45)       not null
+#  listing_id    :bigint           not null
+#
 # Listing Price legacy model
 module Legacy
   class ListingPrice < ApplicationRecord
