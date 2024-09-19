@@ -52,10 +52,23 @@ RSpec.describe Legacy::Listing, type: :model do
       expect(active_listings.count).to be >= 0
       expect(active_listings.all? { |listing| listing.tags.pluck(:id).include?(1) }).to be true
     end
+
     it 'fetches all listings' do
       all_listings = Legacy::Listing.all
       expect(all_listings).not_to be_nil
       expect(all_listings.count).to be >= 0
+    end
+  end
+
+  describe 'Filtering listings by selling price' do
+    it 'fetches all listings with a selling price below 500,000' do
+      # Fetch listings below 500,000
+      filtered_listings = Legacy::Listing.where('selling_price < ?', 500_000)
+
+      # Ensure no listing has a selling price of 500,000 or more
+      expect(filtered_listings).not_to be_nil
+      expect(filtered_listings.count).to be >= 0
+      expect(filtered_listings.all? { |listing| listing.selling_price < 500_000 }).to be true
     end
   end
 end
