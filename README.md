@@ -45,6 +45,8 @@ pg_dump -U <user> -h <rds host url> peachapi > db_dump_backup.sql
 psql -U <db_user> -d <local_database_name> -h localhost -f /path/to/your/db_dump_backup.sql
 ```
 
+You can find the legacy db https://www.notion.so/peach-technology/Technical-Discovery-Documents-1150aac4e9344594af2de3eeec459123?p=9cd75f5063eb40c58d56e70207228e9a&pm=s
+
 - Create the database: `rails db:create`
 - Initialize schema: `rails db:migrate`
 
