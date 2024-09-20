@@ -1,5 +1,5 @@
-class FreshSalesJob
-  include Sidekiq::Job
+class FreshSalesJob < ApplicationJob
+  queue_as :default
 
   def perform(operation, data, lead_id)
     freshsales_service = FreshSalesService.new(

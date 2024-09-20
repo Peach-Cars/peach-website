@@ -41,15 +41,15 @@ RSpec.describe "FreshSalesJob", type: :job do
 
   context 'when enqueuing jobs' do
     it 'enqueues a contact creation job' do
-      expect do
-        FreshSalesJob.perform_async('create_contact', contact_payload)
-      end.to change(FreshSalesJob.jobs, :size).by(1)
+      expect {
+        FreshSalesJob.perform_later('create_contact', contact_payload)
+      }.to have_enqueued_job(FreshSalesJob).with('create_contact', contact_payload)
     end
 
     it 'enqueues a listing creation job' do
-      expect do
-        FreshSalesJob.perform_async('create_listing', listing_payload)
-      end.to change(FreshSalesJob.jobs, :size).by(1)
+      expect {
+        FreshSalesJob.perform_later('create_listing', listing_payload)
+      }.to have_enqueued_job(FreshSalesJob).with('create_listing', listing_payload)
     end
   end
 end

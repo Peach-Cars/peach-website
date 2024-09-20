@@ -93,7 +93,7 @@ RSpec.describe "BuyerLead", type: :model do
           email: 'john.doe@example.com',
           phone: '123-456-7890'
         )
-      end.to change(FreshSalesJob.jobs, :size).by(1)
+      end.to have_enqueued_job(FreshSalesJob)
     end
 
     it 'does not enqueue a job if pushed_to_fresh_sales is true' do
@@ -108,7 +108,7 @@ RSpec.describe "BuyerLead", type: :model do
       )
       expect do
         buyer_lead.save
-      end.not_to change(FreshSalesJob.jobs, :size)
+      end.not_to have_enqueued_job(FreshSalesJob)
     end
   end
 

@@ -33,7 +33,7 @@ class BuyerLead < Lead
   def enqueue_freshsales_job
     return if sent_to_freshsales
 
-    FreshSalesJob.perform_async('create_contact', freshsales_payload, id)
+    FreshSalesJob.perform_later('create_contact', freshsales_payload, id)
   end
 
   def freshsales_payload
