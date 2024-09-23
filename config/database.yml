@@ -40,7 +40,7 @@ production:
   
 
   replica:
-    host: <%= ENV["REPLICA_HOST"] %>
+    host: <%= ENV["READ_REPLICA_HOST"] %>
     port: 5432
     username: <%= ENV["REPLICA_DB_USERNAME"] %>
     password: <%= ENV["REPLICA_DB_PASSWORD"] %>
