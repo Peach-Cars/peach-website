@@ -1,5 +1,29 @@
 #!/usr/bin/env sh
 
+# Get the PID for processes listening on port 3000 and 3036
+pids=$(lsof -i :3000 -t)
+pids+=" "$(lsof -i :3036 -t)
+
+# Check if there are any PIDs returned
+if [ -z "$pids" ]; then
+  echo "No processes found on ports 3000 or 3036."
+else
+  # Kill the processes
+  for pid in $pids; do
+    echo "Killing process with PID: $pid"
+    kill -9 $pid
+  done
+fi
+
+# Remove the tmp/pids directory
+if [ -d "tmp/pids" ]; then
+  echo "Removing tmp/pids directory..."
+  rm -rf tmp/pids
+  echo "tmp/pids directory removed."
+else
+  echo "tmp/pids directory does not exist."
+fi
+
 if ! gem list foreman -i --silent; then
   echo "Installing foreman..."
   gem install foreman
