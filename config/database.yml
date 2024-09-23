@@ -2,8 +2,8 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: <%= Rails.application.credentials.dig(:database, :username)  %>
-  password: <%= Rails.application.credentials.dig(:database, :password) %>
+  username: <%= ENV["DEV_DB_USERNAME"] %>
+  password: <%= ENV["DEV_DB_PASSWORD"] %>
 
 development:
   primary:
@@ -13,8 +13,8 @@ development:
   legacy:
     <<: *default
     database: peach
-    username: <%= Rails.application.credentials.dig(:legacy_db, :username)  %>
-    password: <%= Rails.application.credentials.dig(:legacy_db, :password) %>
+    username: <%= ENV["DEV_DB_USERNAME"] %>
+    password: <%= ENV["DEV_DB_PASSWORD"] %>
     database_tasks: false
 
 test:
@@ -25,8 +25,8 @@ test:
   legacy:
     <<: *default
     database: peach
-    username: <%= Rails.application.credentials.dig(:legacy_db, :username)  %>
-    password: <%= Rails.application.credentials.dig(:legacy_db, :password) %>
+    username: <%= ENV["DEV_DB_USERNAME"] %>
+    password: <%= ENV["DEV_DB_PASSWORD"] %>
     database_tasks: false
 
 
