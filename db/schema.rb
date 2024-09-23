@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_13_112812) do
+ActiveRecord::Schema[7.2].define(version: 2024_08_19_080724) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -41,27 +41,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_13_112812) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
-  end
-
-  create_table "leads", force: :cascade do |t|
-    t.string "full_name"
-    t.string "email"
-    t.string "phone"
-    t.string "type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "registration_number"
-    t.integer "model_id"
-    t.integer "year_of_manufacture"
-    t.decimal "asking_price"
-    t.integer "mileage"
-    t.string "location"
-    t.integer "listing_id"
-    t.boolean "requested_financing"
-    t.string "lead_source"
-    t.boolean "consent", default: false, null: false
-    t.boolean "sent_to_freshsales"
-    t.boolean "sent_to_django_api"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
