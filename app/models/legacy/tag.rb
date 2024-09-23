@@ -8,7 +8,6 @@
 #  name        :string(45)       not null
 #  description :text             not null
 #
-# Listing tags legacy model (active, featured, flagged, sold, archived)
 module Legacy
   class Tag < ApplicationRecord
     self.table_name = "vehicle_tag"

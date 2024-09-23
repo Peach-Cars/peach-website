@@ -8,7 +8,6 @@
 #  selling_price :string(45)       not null
 #  listing_id    :bigint           not null
 #
-# Listing Price legacy model
 module Legacy
   class ListingPrice < ApplicationRecord
     self.table_name = "vehicle_vehiclelistingpricehistory"

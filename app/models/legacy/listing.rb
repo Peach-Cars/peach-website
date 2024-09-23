@@ -34,7 +34,6 @@
 #  seller_relation_manager_id      :bigint
 #  listed_on                       :timestamptz
 #
-# Listing legacy model
 module Legacy
   class Listing < ApplicationRecord
     self.table_name = "vehicle_vehiclelisting"

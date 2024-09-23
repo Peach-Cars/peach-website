@@ -88,7 +88,6 @@
 #  slug                          :string(100)
 #  seller_source                 :string(20)
 #
-# Vehicle legacy model
 module Legacy
   class Vehicle < ApplicationRecord
     self.table_name = "vehicle_vehicle"

@@ -26,7 +26,6 @@
 #  duplicate_to      :integer
 #  original          :boolean          not null
 #
-# Listing relationship manager legacy model
 module Legacy
   class ListingRelationshipManager < ApplicationRecord
     self.table_name = "users_user"
