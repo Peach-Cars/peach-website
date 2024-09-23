@@ -27,6 +27,9 @@ RSpec.configure do |config|
   config.fixture_paths = [
     Rails.root.join("spec/fixtures")
   ]
+  # Include FactoryBot syntax methods
+  config.include FactoryBot::Syntax::Methods
+
   # config.include FactoryBot::Syntax::Methods
   ActiveJob::Base.queue_adapter = :test
 

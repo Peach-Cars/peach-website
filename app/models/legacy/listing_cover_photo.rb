@@ -12,6 +12,7 @@
 #  modified     :timestamptz      not null
 #  is_processed :boolean          not null
 #
+# Listing Image legacy model
 module Legacy
   class ListingCoverPhoto < ApplicationRecord
     self.table_name = "vehicle_vehiclelistingimage"
