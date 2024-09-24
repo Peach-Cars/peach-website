@@ -6,8 +6,6 @@ class BaseApiService
   option :token, optional: true
   option :auth_type, default: -> { 'Bearer' }
 
-  private
-
   def connection
     @connection ||= Faraday.new(url: base_url) do |faraday|
       faraday.request :url_encoded
@@ -15,6 +13,7 @@ class BaseApiService
       faraday.adapter Faraday.default_adapter
       faraday.response :logger
     end
+  
   end
 
   def get(path)
@@ -65,4 +64,5 @@ class BaseApiService
   end
 
   class ApiError < StandardError; end
+
 end
