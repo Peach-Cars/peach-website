@@ -2,12 +2,12 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: <%= ENV["DEV_DB_USERNAME"] %>
-  password: <%= ENV["DEV_DB_PASSWORD"] %>
 
 development:
   primary:
     <<: *default
+    username: <%= ENV["DEV_DB_USERNAME"] %>
+    password: <%= ENV["DEV_DB_PASSWORD"] %>
     database: peach_cars
 
   legacy:
@@ -15,20 +15,21 @@ development:
     database: peach
     username: <%= ENV["DEV_DB_USERNAME"] %>
     password: <%= ENV["DEV_DB_PASSWORD"] %>
-    database_tasks: false
+    migrations_paths: db/legacy_migrate
 
 test:
   primary:
     <<: *default
+    username: <%= ENV["DEV_DB_USERNAME"] %>
+    password: <%= ENV["DEV_DB_PASSWORD"] %>
     database: peach_cars_test
   
   legacy:
     <<: *default
-    database: peach
     username: <%= ENV["DEV_DB_USERNAME"] %>
     password: <%= ENV["DEV_DB_PASSWORD"] %>
-    database_tasks: false
-
+    database: peach
+    migrations_paths: db/legacy_migrate
 
 production:
   primary:
@@ -37,10 +38,10 @@ production:
     database: <%= ENV["PROD_DB_NAME"] %>
     username: <%= ENV["PROD_DB_USERNAME"] %>
     password: <%= ENV["PROD_DB_PASSWORD"] %>
-  
 
   replica:
-    host: <%= ENV["READ_REPLICA_HOST"] %>
+    <<: *default
+    host: <%= ENV["REPLICA_HOST"] %>
     port: 5432
     username: <%= ENV["REPLICA_DB_USERNAME"] %>
     password: <%= ENV["REPLICA_DB_PASSWORD"] %>
@@ -52,3 +53,4 @@ production:
     username: <%= ENV["LEGACY_DB_USERNAME"] %>
     password: <%= ENV["LEGACY_DB_PASSWORD"] %>
     database_tasks: false
+    replica: true
