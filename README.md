@@ -29,26 +29,29 @@ application up and running.
    yarn
    ```
 
-### Database Setup
+## Database Setup
 
-## Legacy local db setup
-
-- Get the database dump using this command:
-
+- Create you env file and replace values with your own
+```bash
+$ cp .env-example .env
 ```
-pg_dump -U <user> -h <rds host url> peachapi > db_dump_backup.sql
+
+- Create your databases and run migrations
+```bash
+$ bin/rails db:create 
+$ bin/rails db:migrate
 ```
+
+### Legacy local db setup
+
+- Download the legacy db dump [here](https://www.notion.so/peach-technology/Technical-Discovery-Documents-1150aac4e9344594af2de3eeec459123?p=9cd75f5063eb40c58d56e70207228e9a&pm=s) and save it at the root of your project directory
+
 
 - After the getting the dump, dump the database into your local database
 
 ```
-psql -U <db_user> -d <local_database_name> -h localhost -f /path/to/your/db_dump_backup.sql
+psql -U <your_db_user> -d peach -h localhost -f /path/to/your/project/db_backup.sql
 ```
-
-You can find the legacy db https://www.notion.so/peach-technology/Technical-Discovery-Documents-1150aac4e9344594af2de3eeec459123?p=9cd75f5063eb40c58d56e70207228e9a&pm=s
-
-- Create the database: `rails db:create`
-- Initialize schema: `rails db:migrate`
 
 ### How to Run the Test Suite
 
