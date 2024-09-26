@@ -26,7 +26,6 @@
 #  duplicate_to      :integer
 #  original          :boolean          not null
 #
-# User legacy model
 module Legacy
   class User < ApplicationRecord
     self.table_name = "users_user"

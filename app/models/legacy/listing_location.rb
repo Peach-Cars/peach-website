@@ -7,7 +7,6 @@
 #  modified :timestamptz      not null
 #  name     :string(50)       not null
 #
-# Listing Location Legacy model
 module Legacy
   class ListingLocation < ApplicationRecord
     self.table_name = "vehicle_vehiclelistinglocation"

@@ -12,9 +12,10 @@
 #  modified     :timestamptz      not null
 #  is_processed :boolean          not null
 #
+# Listing Image legacy model
 module Legacy
-  class ListingImage < ApplicationRecord
+  class ListingCoverPhoto < ApplicationRecord
     self.table_name = "vehicle_vehiclelistingimage"
-    belongs_to :listing, class_name: 'Legacy::Listing', foreign_key: 'listing_id'
+    has_one :listing, class_name: 'Legacy::Listing', foreign_key: 'cover_image_id', primary_key: 'id'
   end
 end

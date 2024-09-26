@@ -6,7 +6,6 @@
 #  vehiclelisting_id :bigint           not null
 #  tag_id            :bigint           not null
 #
-# Listing tags legacy model (active, featured, flagged, sold, archived)
 module Legacy
   class ListingTag < ApplicationRecord
     self.table_name = "vehicle_vehiclelisting_tags"
