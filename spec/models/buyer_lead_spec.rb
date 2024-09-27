@@ -28,7 +28,7 @@ RSpec.describe "BuyerLead", type: :model do
     stub_request(:post, "https://peach-team.myfreshworks.com/crm/sales/api/contacts")
       .to_return(
         status: 200,
-        body: { success: true }.to_json, 
+        body: { success: true }.to_json,
         headers: { 'Content-Type' => 'application/json' }
       )
   end

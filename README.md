@@ -21,10 +21,13 @@ application up and running.
 ## Setup Instructions
 
 1. Install Ruby dependencies:
+
    ```bash
    bundle install
    ```
+
 2. Install JS dependencies:
+
    ```bash
    yarn
    ```
@@ -32,26 +35,40 @@ application up and running.
 ## Database Setup
 
 - Create you env file and replace values with your own
+
 ```bash
-$ cp .env-example .env
+cp .env-example .env
 ```
 
 - Create your databases and run migrations
+
 ```bash
-$ bin/rails db:create 
-$ bin/rails db:migrate
+bin/rails db:create 
+bin/rails db:migrate
 ```
 
 ### Legacy local db setup
 
 - Download the legacy db dump [here](https://www.notion.so/peach-technology/Technical-Discovery-Documents-1150aac4e9344594af2de3eeec459123?p=9cd75f5063eb40c58d56e70207228e9a&pm=s) and save it at the root of your project directory
 
-
 - After the getting the dump, dump the database into your local database
 
 ```
 psql -U <your_db_user> -d peach -h localhost -f /path/to/your/project/db_backup.sql
 ```
+
+## Migrations after setup
+
+- To ensure there are no unexpected changes on primary or legacy databases, ensure you specify which db you want to migrate ie
+
+```bash
+bin/rails db:create:primary #To re-create primary database 
+bin/rails db:create:legacy  #To re-create legacy database 
+bin/rails db:migrate:primary #To run primary migrations
+bin/rails db:migrate:legacy # To run legacy migrations
+```
+
+It’s a good practice to back up your databases before running migrations to avoid data loss.
 
 ### How to Run the Test Suite
 
@@ -62,7 +79,7 @@ psql -U <your_db_user> -d peach -h localhost -f /path/to/your/project/db_backup.
 - **Sidekiq**: Background jobs
 - **Redis**: Caching and job queues
 
-* Deployment instructions
+- Deployment instructions
 
 # Inertia on Rails with SSR enabled
 
