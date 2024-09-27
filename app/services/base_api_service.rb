@@ -1,4 +1,5 @@
 # To be used to make various API requests
+require_relative 'api_error' 
 class BaseApiService
   extend Dry::Initializer
 
@@ -64,5 +65,4 @@ class BaseApiService
     path.start_with?('/') ? path : "/#{path}"
   end
 
-  class ApiError < StandardError; end
 end
