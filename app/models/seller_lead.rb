@@ -30,7 +30,7 @@ class SellerLead < Lead
   private
 
   def enqueue_freshsales_job
-    return if sent_to_freshsales 
+    return if sent_to_freshsales
 
     FreshSalesJob.perform_later('create_contact', freshsales_payload, id)
   end

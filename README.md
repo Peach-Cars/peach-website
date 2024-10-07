@@ -34,7 +34,7 @@ application up and running.
 
 ## Database Setup
 
-- Create you env file and replace values with your own
+- Create you env fible and replace values with your own
 
 ```bash
 cp .env-example .env
