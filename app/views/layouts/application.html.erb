@@ -1,14 +1,16 @@
-<!DOCTYPE html>
+<!doctype html>
 <html class="h-full bg-gray-100">
   <head>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %> 
-    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-    <%= stylesheet_link_tag "application" %>
-    <%= vite_client_tag %>
-    <%= vite_react_refresh_tag %>
-    <%= vite_typescript_tag 'application.tsx' %>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="<%= asset_path('logo-peach.png') %>"/>
+ 
+    <%= csrf_meta_tags %> <%= csp_meta_tag %> 
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %> 
+    <%= stylesheet_link_tag "application" %> <%= vite_client_tag %>
+    <%= vite_react_refresh_tag %> <%= vite_typescript_tag 'application.tsx' %>
     <!--
       If using a TypeScript entrypoint file:
         vite_typescript_tag 'application'
@@ -18,7 +20,6 @@
 
       Visit the guide for more information: https://vite-ruby.netlify.app/guide/rails
     -->
-
   </head>
 
   <body class="h-full ">
