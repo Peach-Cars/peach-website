@@ -72,12 +72,6 @@ group :development, :test do
 
   # Provides RSpec-specific linting rules for RuboCop. The '~> 2.0' version allows updates within the 2.x range, while `require: false` prevents auto-requiring in production.
   gem 'rubocop-rspec', '~> 2.0', require: false
-
-  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-   gem "debug", platforms: %i[mri mingw x64_mingw]
-
-   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
-   gem "brakeman", require: false
 end
 
 gem "tailwindcss-rails", "~> 2.7"
@@ -109,7 +103,7 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
-  gem "selenium-webdriver"
   gem 'factory_bot_rails', '~> 6.2'
+  gem "selenium-webdriver"
   gem 'webmock'
 end
