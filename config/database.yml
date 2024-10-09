@@ -2,38 +2,57 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: <%= Rails.application.credentials.dig(:database, :username)  %>
-  password: <%= Rails.application.credentials.dig(:database, :password) %>
 
 development:
   primary:
     <<: *default
+    username: <%= ENV["USERNAME"] %>
+    password: <%= ENV["PASSWORD"] %>
     database: peach_cars
 
   legacy:
     <<: *default
     database: peach
+    username: <%= ENV["USERNAME"] %>
+    password: <%= ENV["PASSWORD"] %>
+    migrations_paths: db/legacy_migrate
 
 test:
   primary:
     <<: *default
+    username: <%= ENV["USERNAME"] %>
+    password: <%= ENV["PASSWORD"] %>
     database: peach_cars_test
-
+  
   legacy:
     <<: *default
-    database: peach_test
+    username: <%= ENV["USERNAME"] %>
+    password: <%= ENV["PASSWORD"] %>
+    database: peach
+    migrations_paths: db/legacy_migrate
 
 production:
   primary:
     <<: *default
-    host: <%= ENV["PROD_DB_HOST"] %>
-    database: <%= ENV["PROD_DB_NAME"] %>
-    username: <%= ENV["PROD_DB_USERNAME"] %>
-    password: <%= ENV["PROD_DB_PASSWORD"] %>
+    host: <%= ENV["DB_HOST"] %>
+    database: <%= ENV["DB_NAME"] %>
+    username: <%= ENV["USERNAME"] %>
+    password: <%= ENV["PASSWORD"] %>
 
   replica:
     <<: *default
-    host: <%= ENV["READ_REPLICA_HOST"] %>
+    host: <%= ENV["REPLICA_DB_HOST"] %>
+    database: <%= ENV["REPLICA_DB_NAME"] %>
     port: 5432
-    username: <%= Rails.application.credentials.dig(:database, :replica_username) %>
-    password: <%= Rails.application.credentials.dig(:database, :replica_password) %>
+    username: <%= ENV["REPLICA_DB_USERNAME"] %>
+    password: <%= ENV["REPLICA_DB_PASSWORD"] %>
+
+  legacy:
+    <<: *default
+    database: <%= ENV["LEGACY_DB_NAME"] %>
+    host: <%= ENV["LEGACY_DB_HOST"] %>
+    port: 5432
+    username: <%= ENV["LEGACY_DB_USERNAME"] %>
+    password: <%= ENV["LEGACY_DB_PASSWORD"] %>
+    database_tasks: false
+    replica: true

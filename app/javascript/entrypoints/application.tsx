@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { createInertiaApp } from '@inertiajs/inertia-react';
 import { InertiaProgress } from '@inertiajs/progress';
 import axios from 'axios';
-import Layout from '../components/Layout';
+import Layout from '../layouts/Layout';
 
 // Define types
 import type { ComponentType } from 'react';

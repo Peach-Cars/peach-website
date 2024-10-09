@@ -30,6 +30,8 @@ Rails.application.configure do
   # Raise exceptions instead of rendering exception templates.
   config.action_dispatch.show_exceptions = false
 
+  config.log_level = :debug
+
   # Disable request forgery protection in test environment.
   config.action_controller.allow_forgery_protection = false
 
@@ -38,7 +40,7 @@ Rails.application.configure do
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :default
-  
+
   # Raise exceptions for disallowed deprecations.
   config.active_support.disallowed_deprecation = :raise
 

@@ -1,4 +1,13 @@
-# Listing Price legacy model
+# == Schema Information
+#
+# Table name: vehicle_vehiclelistingpricehistory
+#
+#  id            :bigint           not null, primary key
+#  created       :timestamptz      not null
+#  modified      :timestamptz      not null
+#  selling_price :string(45)       not null
+#  listing_id    :bigint           not null
+#
 module Legacy
   class ListingPrice < ApplicationRecord
     self.table_name = "vehicle_vehiclelistingpricehistory"
