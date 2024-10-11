@@ -1,4 +1,5 @@
 import { Head } from '@inertiajs/inertia-react';
+import Container from '../components/layout/Container';
 
 interface DashboardProps {
   name: string;
@@ -7,12 +8,8 @@ interface DashboardProps {
 
 export default function Dashboard({ name, tagline }: DashboardProps) {
   return (
-    <>
-      <Head title="Home" />
-      <h1 className="mb-4 text-3xl font-bold leading-tight text-white">
-        {' '}
-        Peach cars {name}
-      </h1>
-    </>
+    <Container className="">
+      <Head title="Peach Cars | Home" />
+    </Container>
   );
 }
