@@ -9,10 +9,10 @@ export default function Container({
   className = '',
   size = 'full',
 }: ContainerProps) {
-  const containerClass = size === 'full' ? 'w-full' : 'max-w-7xl mx-auto';
+  const containerClass = size === 'full' ? 'w-full ' : 'max-w-7xl mx-auto ';
 
   return (
-    <div className={`${containerClass} ${className} `}>
+    <div className={`${containerClass} ${className} bg-white`}>
       <div>{children}</div>
     </div>
   );

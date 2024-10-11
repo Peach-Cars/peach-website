@@ -1,12 +1,11 @@
 import { Head } from '@inertiajs/inertia-react';
 import Container from '../components/layout/Container';
 
-interface DashboardProps {
-  name: string;
-  tagline: string;
+interface HomeProps {
+  
 }
 
-export default function Dashboard({ name, tagline }: DashboardProps) {
+export default function Home({  }: HomeProps) {
   return (
     <Container className="">
       <Head title="Peach Cars | Home" />
