@@ -1,5 +1,4 @@
 # config/routes.rb
-
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
@@ -8,6 +7,6 @@ Rails.application.routes.draw do
 
   # Mount Sidekiq's web interface at /sidekiq
   mount Sidekiq::Web => '/sidekiq'
-resources :tries_posts, only: [:index]
+  resources :tries_posts, only: [:index]
 
 end

@@ -3,7 +3,7 @@ class TriesPostsController < ApplicationController
       ghost_client = GhostClientService.new
       response = ghost_client.fetch_posts
   
-      if response.present?
+    if response.present?
         @posts_data = response.body
 
     else
@@ -12,6 +12,3 @@ class TriesPostsController < ApplicationController
     end
 
   end
-  
-  
-  
