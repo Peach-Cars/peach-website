@@ -4,6 +4,7 @@ class TriesPostsController < ApplicationController
       response = ghost_client.fetch_posts
   
     if response.present?
+
         @posts_data = response.body
 
     else
@@ -12,3 +13,5 @@ class TriesPostsController < ApplicationController
     end
 
   end
+
+  
