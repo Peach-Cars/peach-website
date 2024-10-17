@@ -5,6 +5,8 @@ class BlogsController < ApplicationController
 
       if response.present?
           @posts_data = response.body
+          @pagination = @posts_data['meta']['pagination']
+          Rails.logger.info("Pagination Data: #{@pagination}")
 
       else
           @posts_data = []
