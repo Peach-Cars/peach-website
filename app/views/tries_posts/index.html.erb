@@ -14,3 +14,12 @@
     </div>
   </div>
 <% end %>
+<div class="flex justify-between mt-6">
+  <% if @pagination['prev'] %>
+    <a href="<%= tries_posts_path(page: @pagination['prev']) %>" class="text-blue-500 hover:text-blue-700">Previous</a>
+  <% end %>
+  <span>Page <%= @pagination['page'] %> of <%= @pagination['pages'] %></span>
+  <% if @pagination['next'] %>
+    <a href="<%= tries_posts_path(page: @pagination['next']) %>" class="text-blue-500 hover:text-blue-700">Next</a>
+  <% end %>
+</div>

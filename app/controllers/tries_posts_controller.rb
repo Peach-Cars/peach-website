@@ -4,14 +4,15 @@ class TriesPostsController < ApplicationController
       response = ghost_client.fetch_posts
   
     if response.present?
-
         @posts_data = response.body
+        @pagination = @posts_data['meta']['pagination']
+
 
     else
         @posts_data = []
+        @pagination = {}
+
       end
     end
 
   end
-
-  

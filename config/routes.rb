@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   # Mount Sidekiq's web interface at /sidekiq
   mount Sidekiq::Web => '/sidekiq'
+
   resources :tries_posts, only: [:index]
+  resources :blogs, only: [:index]
 
 end
