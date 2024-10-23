@@ -1,5 +1,6 @@
 import { Link } from '@inertiajs/inertia-react';
 import NewsletterForm from './NewsletterForm';
+import Socials from './Socials';
 
 export default function FooterContent() {
   const phoneNumber = '+25736334488';
@@ -52,6 +53,9 @@ export default function FooterContent() {
                 </a>
               </p>
             </div>
+          </div>
+          <div className="hidden md:block">
+            <Socials/>
           </div>
         </div>
         <div className="flex w-full flex-col items-start mt-12 md:mt-0 justify-start gap-10 md:gap-0 md:gap-y-8 text-[1.3rem] leading-[2rem]  ">
