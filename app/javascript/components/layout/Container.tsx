@@ -9,11 +9,12 @@ export default function Container({
   className = '',
   size = 'full',
 }: ContainerProps) {
-  const containerClass = size === 'full' ? 'w-full ' : 'max-w-7xl mx-auto ';
+  const containerClass = size === 'full' ? 'w-full ' : 'max-w-[95rem]  mx-auto ';
 
   return (
     <div className={`${containerClass} ${className} bg-white`}>
-      <div>{children}</div>
+      <div className="font-satoshi">{children}</div>
     </div>
   );
 }
+
