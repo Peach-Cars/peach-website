@@ -1,4 +1,5 @@
 import { Link } from '@inertiajs/inertia-react';
+import NewsletterForm from './NewsletterForm';
 
 export default function FooterContent() {
   const phoneNumber = '+25736334488';
@@ -148,19 +149,7 @@ export default function FooterContent() {
                 straight into your inbox.
               </span>
             </p>
-            <form className="flex flex-col justify-start w-full gap-6 py-6 md:gap-x-6 md:flex-row ">
-              <input
-                placeholder="Full Name..."
-                className="h-[5rem] md:h-[4.5rem] rounded-[0.8rem]  md:w-[17rem] outline-none border border-lightGray placeholder:text-placeholderGray placeholder:text-[1.3rem]"
-                type="text"
-              />
-              <input
-                placeholder="Enter Email..."
-                className="h-[5rem] md:h-[4.5rem] rounded-[0.8rem]  md:w-[17rem] outline-none border border-lightGray placeholder:text-placeholderGray placeholder:text-[1.3rem]"
-                type="email"
-              />
-              <button className="h-[4.5rem]  px-6 text-white bg-pinkDark rounded-[1rem] text-[1.3rem]">Submit</button>
-            </form>
+           <NewsletterForm/>
           </div>
         </div>
       </div>
