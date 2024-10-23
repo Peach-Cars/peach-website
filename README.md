@@ -40,6 +40,12 @@ application up and running.
 cp .env-example .env
 ```
 
+Ensure all env variables are available in your environment
+
+```
+export $(grep -v '^#' .env | xargs)
+```
+
 - Create your databases and run migrations
 
 ```bash

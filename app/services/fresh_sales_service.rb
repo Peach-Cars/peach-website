@@ -1,8 +1,8 @@
 # Service to push contacts and vehicles to Freshsales
 class FreshSalesService < BaseApiService
   include ApiErrorHandler
-  option :base_url, default: -> { Rails.application.credentials.dig(:freshsales, :base_url) }
-  option :token, default: -> { Rails.application.credentials.dig(:freshsales, :api_key) }
+  option :base_url, default: -> { ENV.fetch("FRESH_SALES_URL") }
+  option :token, default: -> { ENV.fetch("FRESH_SALES_KEY") }
   option :auth_type, default: -> { 'Token' }
 
   def create_contact(data)
