@@ -22,6 +22,7 @@ module.exports = {
         darkBlueish: '#1F2937',
         lightGray: '#E5E7EB',
         placeholderGray: '#6B7280',
+        darkBlue: '#374151',
       }
     },
   },

@@ -16,8 +16,8 @@ export default function Footer() {
         </div>
 
         <div className="flex items-center justify-start flex-wrap md:flex-nowrap md:justify-between pb-4 text-[1.3rem] text-textGray ">
-          <p className='mb-4 md:mb-0'>Peach Cars &copy; {currentYear}. All rights reserved</p>
-          <div className="flex flex-wrap justify-start gap-x-6">
+          <p className=''>Peach Cars &copy; {currentYear}. All rights reserved</p>
+          <div className="flex flex-wrap justify-start pt-4 gap-x-6 md:pt-0">
             <Link href="#">Terms &amp; Conditions</Link>
             <Link href="#">Privacy</Link>
             <Link href="#">Cookies</Link>

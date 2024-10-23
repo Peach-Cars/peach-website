@@ -118,7 +118,7 @@ export default function FooterContent() {
                     <p className="text-nowrap">Peach Cars &ndash; Lavington</p>
                     <p>James Gichuru Road</p>
                     <a
-                      className="block underline"
+                      className="block underline underline-offset-2"
                       href="https://goo.gl/maps/4etrLiKvs6BTMqV3A"
                       target="_blank"
                       rel="nofollow noopener noreferrer"
@@ -132,7 +132,7 @@ export default function FooterContent() {
                     <p className="text-nowrap">Peach Cars &ndash; Windsor</p>
                     <p>Kiambu Road</p>
                     <a
-                      className="block underline"
+                      className="block underline underline-offset-2"
                       href="https://maps.app.goo.gl/gzEPB8LdhvY4PynCA"
                       target="_blank"
                       rel="nofollow noopener noreferrer"

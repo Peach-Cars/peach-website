@@ -19,14 +19,14 @@ export default function NewsletterForm() {
           placeholder="Full Name..."
           value={data.full_name}
           onChange={e => setData('full_name', e.target.value)}
-          className="h-[5rem] md:h-[4.5rem] rounded-[0.8rem]  md:w-[17rem] outline-none border border-lightGray placeholder:text-placeholderGray placeholder:text-[1.3rem]"
+          className="h-[5rem] md:h-[4.5rem] rounded-[0.8rem] text-[1.3rem]  md:w-[17rem] outline-none border border-lightGray placeholder:text-placeholderGray placeholder:text-[1.3rem]"
           type="text"
         />
         <input
           value={data.email}
           onChange={e => setData('email', e.target.value)}
           placeholder="Enter Email..."
-          className="h-[5rem] md:h-[4.5rem] rounded-[0.8rem]  md:w-[17rem] outline-none border border-lightGray placeholder:text-placeholderGray placeholder:text-[1.3rem]"
+          className="h-[5rem] md:h-[4.5rem] rounded-[0.8rem] text-[1.3rem]  md:w-[17rem] outline-none border border-lightGray placeholder:text-placeholderGray placeholder:text-[1.3rem]"
           type="email"
         />
         <button
