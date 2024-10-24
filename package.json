@@ -21,6 +21,7 @@
     "vite-plugin-ruby": "^5.0.0"
   },
   "dependencies": {
+    "@hugeicons/react": "^0.6.3",
     "@inertiajs/inertia": "^0.11.1",
     "@inertiajs/inertia-react": "^0.8.1",
     "@inertiajs/progress": "^0.2.7",
@@ -32,5 +33,5 @@
     "react-dom": "^18.3.1",
     "typescript": "^5.5.4"
   },
-  "license": "MIT" 
+  "license": "MIT"
 }

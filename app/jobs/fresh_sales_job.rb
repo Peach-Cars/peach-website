@@ -3,8 +3,8 @@ class FreshSalesJob < ApplicationJob
 
   def perform(operation, data, lead_id)
     freshsales_service = FreshSalesService.new(
-      base_url: Rails.application.credentials.dig(:freshsales, :base_url),
-      token: Rails.application.credentials.dig(:freshsales, :api_key),
+      base_url: ENV.fetch("FRESH_SALES_URL"),
+      token: ENV.fetch("FRESH_SALES_KEY"),
       auth_type: 'Token'
     )
 
