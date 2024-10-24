@@ -1,3 +1,4 @@
+
 # README
 
 This README would normally document whatever steps are necessary to get the
@@ -20,18 +21,60 @@ application up and running.
 ## Setup Instructions
 
 1. Install Ruby dependencies:
+
    ```bash
    bundle install
    ```
+
 2. Install JS dependencies:
+
    ```bash
    yarn
    ```
 
-### Database Setup
+## Database Setup
 
-- Create the database: `rails db:create`
-- Initialize schema: `rails db:migrate`
+- Create you env fible and replace values with your own
+
+```bash
+cp .env-example .env
+```
+
+Ensure all env variables are available in your environment
+
+```
+export $(grep -v '^#' .env | xargs)
+```
+
+- Create your databases and run migrations
+
+```bash
+bin/rails db:create 
+bin/rails db:migrate
+```
+
+### Legacy local db setup
+
+- Download the legacy db dump [here](https://www.notion.so/peach-technology/Technical-Discovery-Documents-1150aac4e9344594af2de3eeec459123?p=9cd75f5063eb40c58d56e70207228e9a&pm=s) and save it at the root of your project directory
+
+- After the getting the dump, dump the database into your local database
+
+```
+psql -U <your_db_user> -d peach -h localhost -f /path/to/your/project/db_backup.sql
+```
+
+## Migrations after setup
+
+- To ensure there are no unexpected changes on primary or legacy databases, ensure you specify which db you want to migrate ie
+
+```bash
+bin/rails db:create:primary #To re-create primary database 
+bin/rails db:create:legacy  #To re-create legacy database 
+bin/rails db:migrate:primary #To run primary migrations
+bin/rails db:migrate:legacy # To run legacy migrations
+```
+
+It’s a good practice to back up your databases before running migrations to avoid data loss.
 
 ### How to Run the Test Suite
 
@@ -42,18 +85,11 @@ application up and running.
 - **Sidekiq**: Background jobs
 - **Redis**: Caching and job queues
 
-* Deployment instructions
-
-* ...
+- Deployment instructions
 
 # Inertia on Rails with SSR enabled
 
-[Ruby on Rails](https://github.com/rails/rails), [Vite](https://github.com/vitejs/vite), and [InertiaJS](https://github.com/inertiajs/inertia-rails) I'd recommend checking out the following files:
-
-- `app/javascript/pages/Dashboard.jsx`: The React component being rendered by the `/` route
-- `app/controllers/dashboard_controller.rb`: The controller that handled rendering the root page
-- `app/javascript/components/Layout.jsx`: The React component providing the "magic" layout similar to Rails's application layout
-- `app/javascript/entrypoints/application.jsx`: The Vite entrypoint that handles initializing InertiaJS
+[Ruby on Rails](https://github.com/rails/rails), [Vite](https://github.com/vitejs/vite), and [InertiaJS](https://github.com/inertiajs/inertia-rails)
 
 To run locally:
 
