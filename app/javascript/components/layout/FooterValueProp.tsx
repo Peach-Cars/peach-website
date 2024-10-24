@@ -27,11 +27,11 @@ export default function FooterValueProp() {
     <div className="flex flex-col items-start justify-start gap-5 px-6 py-10 md:px-8 md:py-8 md:items-start md:flex-row gap-x-6 ">
       {valueItems.map((item, index) => (
         <div key={index} className="flex-1 max-w-[35rem] sm:max-w-[40rem] md:w-[27rem] text-white text-[1.3rem] leading-[1.755rem] mb-6 md:mb-0">
-          <div className="inline-flex gap-5 mb-6 items-end font-[900]">
+          <div className="inline-flex gap-5 mb-6 items-end font-[700]">
             <i>{item.icon}</i>
             <p className='text-[1.3rem]'>{item.title}</p>
           </div>
-          <p className="font-[400] leading-[1.755rem]">{item.content}</p>
+          <p className="leading-[1.755rem]">{item.content}</p>
         </div>
       ))}
     </div>

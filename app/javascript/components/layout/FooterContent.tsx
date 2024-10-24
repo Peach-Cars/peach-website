@@ -9,12 +9,18 @@ export default function FooterContent() {
   const whatsappLink = `https://api.whatsapp.com/send?phone=44${phoneNumber}&text=${encodeURIComponent(message)}`;
 
   return (
-    <div className="text-textGray">
+    <section className="text-textGray">
       <h1 className="text-[2rem] leading-[2rem] font-[700]">
         Help and Support
       </h1>
-      <div className="flex flex-col items-start justify-start mt-6  md:justify-end md:space-x-[6rem] md:flex-row">
-        <div className="flex w-full flex-col items-start justify-start gap-10 md:gap-0 md:gap-y-8  text-[1.3rem] leading-[2rem] ">
+      <section
+        aria-label="Footer main content"
+        className="flex flex-col items-start justify-start mt-6  md:justify-end md:space-x-[6rem] md:flex-row"
+      >
+        <article
+          aria-label="Opening hours and contacts"
+          className="flex w-full flex-col items-start justify-start gap-10 md:gap-0 md:gap-y-8  text-[1.3rem] leading-[2rem] "
+        >
           <div className="space-y-2 ">
             <p className="text-nowrap">Monday to Saturday 9AM &ndash; 5PM</p>
             <p>Sundays &ndash; Closed</p>
@@ -55,10 +61,13 @@ export default function FooterContent() {
             </div>
           </div>
           <div className="hidden md:block">
-            <Socials/>
+            <Socials />
           </div>
-        </div>
-        <div className="flex w-full flex-col items-start mt-12 md:mt-0 justify-start gap-10 md:gap-0 md:gap-y-8 text-[1.3rem] leading-[2rem]  ">
+        </article>
+        <article
+          aria-label="Resourceful links"
+          className="flex w-full flex-col items-start mt-12 md:mt-0 justify-start gap-10 md:gap-0 md:gap-y-8 text-[1.3rem] leading-[2rem]  "
+        >
           <div className="">
             <h4 className="font-[700] mb-5">Peach Process</h4>
             <div className="space-y-2">
@@ -90,9 +99,12 @@ export default function FooterContent() {
               </Link>
             </div>
           </div>
-        </div>
-        <div className="flex flex-col items-start justify-start w-full mt-10 md:w-auto md:mt-0">
-          <div className="flex flex-col items-start justify-start w-full md:flex-row md:justify-start md:gap-x-12">
+        </article>
+        <section className="flex flex-col items-start justify-start w-full mt-10 md:w-auto md:mt-0">
+          <article
+            aria-label="About us links"
+            className="flex flex-col items-start justify-start w-full md:flex-row md:justify-start md:gap-x-12"
+          >
             <div className="flex w-full w-max flex-col items-start justify-start gap-10 md:gap-0 md:gap-y-8 text-[1.3rem] leading-[2rem] ">
               <div className="">
                 <h4 className="font-[700] mb-5">About Us</h4>
@@ -109,7 +121,10 @@ export default function FooterContent() {
                 </div>
               </div>
             </div>
-            <div className="flex w-full  md:w-max  flex-col items-start justify-start gap-10 md:gap-0 md:gap-y-8 text-[1.3rem] leading-[2rem] mt-12 md:mt-0 ">
+            <article
+              aria-label="Peach locations"
+              className="flex w-full  md:w-max  flex-col items-start justify-start gap-10 md:gap-0 md:gap-y-8 text-[1.3rem] leading-[2rem] mt-12 md:mt-0 "
+            >
               <div className="md:pl-12">
                 <div className="mb-12">
                   {' '}
@@ -142,9 +157,9 @@ export default function FooterContent() {
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div className="w-full pt-14">
+            </article>
+          </article>
+          <article aria-label="Newsletter form" className="w-full pt-14">
             <h1 className="text-[2rem] font-[700] ">Peach Newsletter</h1>
             <p className="leading-[2rem] text-[1.3rem] text-darkBlueish">
               <span>
@@ -153,10 +168,10 @@ export default function FooterContent() {
                 straight into your inbox.
               </span>
             </p>
-           <NewsletterForm/>
-          </div>
-        </div>
-      </div>
-    </div>
+            <NewsletterForm />
+          </article>
+        </section>
+      </section>
+    </section>
   );
 }

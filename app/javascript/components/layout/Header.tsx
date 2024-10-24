@@ -15,7 +15,7 @@ export default function Header() {
 
         <div
           aria-label="Main navigation bar"
-          className="h-[6.1rem] bg-white border-b border-grayLight"
+          className="bg-white border-b  border-grayLight"
         >
           <BottomNav/>
         </div>

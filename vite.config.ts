@@ -4,5 +4,4 @@ import ReactPlugin from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [RubyPlugin(), ReactPlugin()],
-  fastRefresh: true,
 });
