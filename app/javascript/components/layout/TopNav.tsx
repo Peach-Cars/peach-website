@@ -16,7 +16,7 @@ export default function TopNav() {
           </div>
 
           <p className="text-[1rem] font-[500] text-textGray">
-            Peach cars go through levels of screening & inspection to protect
+            Peach cars goes through levels of screening & inspection to protect
             our customers and match their quality expectations.
           </p>
         </div>
